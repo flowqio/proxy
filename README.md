@@ -25,8 +25,18 @@ go build
 
 The endpoint follow spec rule :
 
-http|https://{{user container id [:16]}}-{{ export port }}-{{env cluster}}.env.flowq.io
+http|https://{{ container id [:16]}}-{{ export port }}-{{env cluster}}.env.flowq.io
 
 When proxy accept brower/client request , it will check local docker and proxy all data.
 
 
+
+# Docker image
+
+cd images
+docker build -t <your tag> . 
+
+or :
+
+docker pull flowq/proxy
+docker run -d -P -v /var/run/docker.sock:/var/run/docker.sock flowq/proxy 
