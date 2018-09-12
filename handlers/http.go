@@ -53,7 +53,15 @@ func handleHTTP(env model.Env, w http.ResponseWriter, req *http.Request) {
 	}
 
 	defer resp.Body.Close()
+	log.Debugf("%+v", resp.Header)
+	for k, v := range resp.Header {
+		if k != "Server" {
+			for idx := range v {
+				w.Header().Add(k, v[idx])
+			}
 
+		}
+	}
 	w.WriteHeader(resp.StatusCode)
 	io.Copy(w, resp.Body)
 }
