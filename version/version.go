@@ -15,3 +15,16 @@
 package version
 
 const Version = "0.1.0"
+
+const Vendor = "flowq.io"
+
+const Server = "SimpleHTTP Proxy"
+
+func VersionInfo() map[string]string {
+
+	apiInfo := make(map[string]string)
+	apiInfo["version"] = Version
+	apiInfo["server"] = Server
+	apiInfo["vendor"] = Vendor
+	return apiInfo
+}
